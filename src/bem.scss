@@ -1,0 +1,40 @@
+// 全局使用要在vite.config.ts里面配置
+$namespace: 'h' !default;
+$block-sel: '-' !default;
+$elem-sel: '__' !default;
+$mod-sel: '--' !default;
+
+// 定义一个混入：块状混入，在其他代码里面使用是可以直接识别，如“h-content”
+/*
+    原理：W
+*/
+@mixin b($block) {
+    $B: #{$namespace + $block-sel + $block};
+
+    .#{$B} {
+        @content; // 为占位符，自定义样式
+    }
+}
+
+// 定义一个属性混入,为元素混入，如“h-content__button”
+
+@mixin e($el) {
+    $selector: &; // 获取父级
+
+    @at-root {
+        #{$selector + $elem-sel + $el} {
+            @content;
+        }
+    }
+
+}
+
+@mixin m($md){
+    $mode: &;
+
+    @at-root{
+        #{$mode + $mod-sel + $md}{
+            @content
+        }
+    }
+}
