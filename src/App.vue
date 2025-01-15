@@ -1,8 +1,10 @@
 <script setup lang="ts">
-  import Layout from "./Layout/index.vue"
+import Layout from "./Layout/index.vue"
+import KnowReactive from "./Test/KnowReactive.vue"
 </script>
 
 <template>
+  <KnowReactive></KnowReactive>
   <Layout></Layout>
     
 </template>
